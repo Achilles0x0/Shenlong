@@ -61,4 +61,5 @@ optional arguments:
 TO-DO: 
 
 Integrar com REST para busca de Exploit/CVE.
+
 Integrar outras opções de consulta.
