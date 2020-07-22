@@ -57,3 +57,8 @@ optional arguments:
   -o output, --output output
                         Specify output file name [Default JSON]
 ```
+
+TO-DO: 
+
+Integrar com REST para busca de Exploit/CVE.
+Integrar outras opções de consulta.
