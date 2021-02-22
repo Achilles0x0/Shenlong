@@ -42,7 +42,7 @@ usage:
                                              (_)   '                      
                                                `
                                                
-                                                Version: 0.DEV
+                                                Version: 0.1
 Achilles0x0
 L33t0s_H4ck0r$
 
