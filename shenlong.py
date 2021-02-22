@@ -18,47 +18,47 @@ color = {
 }
 
 bn = r'''
-{GREEN}                            /)          (\                               
-                            <(            )>                          
-                             )\___    ___/(                         
-                              )\--(_,,_)/(                         
-                                .: :: :.                                  
-                               <`^-..-^'>                                 
-                               <^<>'`<>^>>                                
-                                `-(-|)-'  >                               
-                            _____(/=|\)_____>                             
-                           (  .---\()/---.  )  >                          
-                            )(    V^^V-   )(       >                      
-                           (  )   \vv/\- (  )        >                    
-                           ' (     `'  )- ) `         >                   
-                              `      ,'- ' \  `.-.                        
-                                   ,'_ __   \ /   \   >                   
-                                  /____ _    .     )                      
-                                  \======= == )  ,'  >                    
-                                   \========,'  /  >                      
-                     _   ,,-.--.____\_____,' , ' >                        
-                    ( `-'/, <`-------.    ,'   >                          
-                     `  ( )\ )        >--')   /                           
-                         `  ' .------<=====)  (\                          
-                           ,-'        |===)   ( \  _.--.                  
-                          /           .==)    |  \(  --.`                 
-                         /           /==)   , \`.______ \_.-)             
-                        (           /===)      \       \`._/              
-                         `.  `  ____\===)'      \       `._               
-                           ` .      ))=/         .                        
-                                >-'//==.                                  
-                            __,'  /'==-|         .                        
-                      , ---/_,--.(==-,'.         |                        
-                  , ---,   `    (,)  ,'|                                  
-                  - ,---------------'                                     
-                (' /                    \       /                         
-                 `.\                     `-----<                          
-                    )                        \  `.__                      
-                                              ).--._)        
-                                             (_)   '                      
+{GREEN}                            /)          (\
+                            <(            )>
+                             )\___    ___/(
+                              )\--(_,,_)/(
+                                .: :: :.
+                               <`^-..-^'>
+                               <^<>'`<>^>>
+                                `-(-|)-'  >
+                            _____(/=|\)_____>
+                           (  .---\()/---.  )  >
+                            )(    V^^V-   )(       >
+                           (  )   \vv/\- (  )        >
+                           ' (     `'  )- ) `         >
+                              `      ,'- ' \  `.-.
+                                   ,'_ __   \ /   \   >
+                                  /____ _    .     )
+                                  \======= == )  ,'  >
+                                   \========,'  /  >
+                     _   ,,-.--.____\_____,' , ' >
+                    ( `-'/, <`-------.    ,'   >
+                     `  ( )\ )        >--')   /
+                         `  ' .------<=====)  (\
+                           ,-'        |===)   ( \  _.--.
+                          /           .==)    |  \(  --.`
+                         /           /==)   , \`.______ \_.-)
+                        (           /===)      \       \`._/
+                         `.  `  ____\===)'      \       `._
+                           ` .      ))=/         .
+                                >-'//==.
+                            __,'  /'==-|         .
+                      , ---/_,--.(==-,'.         |
+                  , ---,   `    (,)  ,'|
+                  - ,---------------'
+                (' /                    \       /
+                 `.\                     `-----<
+                    )                        \  `.__
+                                              ).--._)
+                                             (_)   '
                                                `{END}
-                                               
-                                                {RED}Version: 0.DEV{END}
+
+                                                {RED}Version: 0.1{END}
 {BOLD}{ORANGE}Achilles0x0{END}
 {BOLD}{RED}L33t0s_H4ck0r${END}
 '''.format(**color)
@@ -86,20 +86,24 @@ class Shenlong(object):
         if target is not None:
             ip = api.host(target)
             print(f'''
-                IP Address: {ip['ip_str']}
-                Hostname: {ip.get('hostnames')}
-                Domain: {ip.get('domains')}
-                Organization: {ip.get('org')}
-                DeviceType: {ip.get('info')}
-                Location: {ip.get('location')}
-                ISP: {ip.get('isp')}
-
------------------------------------PORT DETAILS-----------------------------------''')
-
+IP Address: {ip['ip_str']}
+Hostname: {ip.get('hostnames')}
+OS: {ip.get('os')}
+Domains: {ip.get('domains')}
+Organization: {ip.get('org')}
+ASN: {ip.get('asn')}
+DeviceType: {ip.get('info')}
+Location: {ip.get('location')}
+ISP: {ip.get('isp')}
+Info: {ip.get('os')}
+Ports: {ip.get('ports','transport')}
+CVEs: {ip.get('vulns')}
+----------PORT DETAILS----------''')
             for info in ip['data']:
                 print(f'''
-                Port: {info['port']}/{info['transport']}
-                Info: {info['data']}''')
+Port: {info['port']}/{info['transport']}
+Info: {info['data']}
+''')
 
         if filename is not None:
             with open(filename, 'a') as write_file:
@@ -121,11 +125,10 @@ except KeyboardInterrupt:
       \_ _/
       (o_o)
        VwV{END}
-                      
+
 {RED}Keyboard Interrupt{END}
 '''.format(**color))
 exit()
-
 
 # Necessario instalar a chave de API do Shodan localmente
 # $: easy_install shodan ou pip install shodan
