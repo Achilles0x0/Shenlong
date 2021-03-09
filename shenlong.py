@@ -106,10 +106,10 @@ Info: {info['data']}
 ''')
 
         if filename is not None:
-            with open(filename, 'a') as write_file:
-                json.dump(ip, write_file)
-                write_file.write(',')
-                write_file.close()
+            with open(filename, 'a') as f:
+                json.dump(ip, f, indent=2)
+                f.write(',')
+                f.close()
 
 try:
     Shenlong().start()
